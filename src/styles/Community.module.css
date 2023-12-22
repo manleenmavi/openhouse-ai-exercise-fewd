@@ -13,6 +13,11 @@
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.communityOverviewCard:hover {
+  transform: scale(1.05);
 }
 
 .communityOverviewName {
