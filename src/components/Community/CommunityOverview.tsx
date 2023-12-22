@@ -14,6 +14,15 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
 
   const [avgPrice, setAvgPrice] = useState<number | null>(null);
 
+  //   Validator for Home data
+  const isHome = (data: any): data is Home => {
+    return (
+      data.id !== undefined &&
+      data.communityId !== undefined &&
+      data.price !== undefined
+    );
+  };
+
   //   Calculate the average price of the homes in the community
   const calculateAvgPrice = () => {
 
@@ -23,6 +32,12 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
     });
 
     if (filteredHomeList.length === 0) {
+      return;
+    }
+
+    // Validating the data without filtering
+    if (!Array.isArray(allHomeList) || !allHomeList.every(isHome)) {
+      console.log("Invalid data in home list");
       return;
     }
 
@@ -48,7 +63,7 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
           </div>
         ) : (
           <img
-            src={comunity.imgUrl}
+            src={comunity.imgUrl ?? ""}
             alt={comunity.name}
             className="w-full h-full object-cover"
             onError={() => setImageError(true)}

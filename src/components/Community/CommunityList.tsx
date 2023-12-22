@@ -7,6 +7,14 @@ import CommunityListHeader from "./CommunityListHeader";
 const CommunityList = () => {
   const [communityData, setCommunityData] = useState<Community[] | null>([]);
 
+  // Validator for Community data
+  const isCommunity = (data: any): data is Community => {
+    return (
+      data.id !== undefined &&
+      data.name !== undefined
+    );
+  };
+
   const fetchCommunityData = async () => {
     try {
       //   Using proxy to prevent CORS error
@@ -15,8 +23,18 @@ const CommunityList = () => {
       );
       const data = await response.json();
 
+      //  Validate the data, remoe invalid data from array
+      const validData = data.filter((community: any) => {
+        return isCommunity(community);
+      });
+
+    //  Checking if all data was invalid
+    if(validData.length === 0 && data.length !== 0){
+        throw new Error("Invalid data in community list");
+    }
+
       //   Sort the data by name
-      data.sort((a: Community, b: Community) => {
+      validData.sort((a: Community, b: Community) => {
         if (a.name < b.name) {
           return -1;
         } else if (a.name > b.name) {
@@ -26,7 +44,7 @@ const CommunityList = () => {
         }
       });
 
-      setCommunityData(data);
+      setCommunityData(validData);
     } catch (error) {
       console.error(error);
       setCommunityData(null);
@@ -49,6 +67,7 @@ const CommunityList = () => {
         "/api/googleapis-storage/openhouse-ai-fe-coding-test/homes.json"
       );
       const data = await response.json();
+
       setHomeData(data);
     } catch (error) {
       console.error(error);
