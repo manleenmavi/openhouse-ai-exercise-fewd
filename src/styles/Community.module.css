@@ -22,14 +22,23 @@
 
 .communityOverviewName {
   overflow: visible;
-  font-size: 1.5rem;
   font-weight: 600;
   padding: 2px 10px;
   margin: 10px;
   position: relative;
-  background-color: #aae3e250;
-  clip-path: polygon(0 0, 95% 0, 85% 100%, 0 100%);
 }
+
+.communityOverviewName::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  left: 0;
+  background-color: #aae3e250;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+}
+
 
 /* Background Effect for Community Name */
 /* .communityOverviewName::before {

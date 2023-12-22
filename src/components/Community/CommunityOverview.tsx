@@ -59,7 +59,7 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
       <div className="w-full h-full">
         {imageError ? (
           <div className="w-full h-full flex items-center justify-center">
-            <div className="text-2xl text-gray-400">Image Unavailable</div>
+            <div className="text-center text-2xl text-gray-400">Image Unavailable</div>
           </div>
         ) : (
           <img
@@ -73,7 +73,7 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
 
       <div className="w-full">
         <div className="flex flex-col justify-between">
-          <div className={`${styles.communityOverviewName}`}>
+          <div className={`${styles.communityOverviewName} text-lg md:text-xl lg:text-2xl break-words`}>
             {comunity.name}
           </div>
           <div className="pl-4 pr-4 m-1 mb-4">
