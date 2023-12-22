@@ -1,26 +1,39 @@
 import CommunityOverview from "./CommunityOverview";
-import { Community } from "../../types/types";
+import { Community, Home } from "../../types/types";
 import { useState, useEffect } from "react";
+import LoadingSpinner from "../Animations/LoadingSpinner";
+import CommunityListHeader from "./CommunityListHeader";
 
 const CommunityList = () => {
   const [communityData, setCommunityData] = useState<Community[] | null>([]);
 
   const fetchCommunityData = async () => {
     try {
-      console.log("fetching data");
       //   Using proxy to prevent CORS error
       const response = await fetch(
         "/api/googleapis-storage/openhouse-ai-fe-coding-test/communities.json"
       );
-      console.log(response);
       const data = await response.json();
-      console.log("data");
-      console.log(data);
+
+      //   Sort the data by name
+      data.sort((a: Community, b: Community) => {
+        if (a.name < b.name) {
+          return -1;
+        } else if (a.name > b.name) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+
       setCommunityData(data);
     } catch (error) {
       console.error(error);
       setCommunityData(null);
     }
+
+    // Fetching home list data
+    fetchHomeData();
   };
 
   useEffect(() => {
@@ -28,23 +41,44 @@ const CommunityList = () => {
     fetchCommunityData();
   }, []);
 
+  const [homeData, setHomeData] = useState<Home[] | null>([]);
+  //   Fetching home list data
+  const fetchHomeData = async () => {
+    try {
+      const response = await fetch(
+        "/api/googleapis-storage/openhouse-ai-fe-coding-test/homes.json"
+      );
+      const data = await response.json();
+      setHomeData(data);
+    } catch (error) {
+      console.error(error);
+      setHomeData(null);
+    }
+  };
+
   return (
-    <div className="flex justify-evenly flex-wrap max-w-[80%] m-auto">
-      {communityData?.map((community) => (
-        <CommunityOverview
-          key={community.id}
-          name={community.name}
-          imageUrl={community.imgUrl}
-          avgPrice={50}
-        />
-      ))}
-      {/* For Test */}
-      <CommunityOverview
-        name="Bowness"
-        imageUrl="https://s3-ca-central-1.amazonaws.com/cdnarchitect/2017/11/24105657/bowness-park-rehabilitation.jpg"
-        avgPrice={52}
-      />
-    </div>
+    <>
+      <CommunityListHeader />
+      <div className="flex justify-evenly flex-wrap max-w-[80%] min-h-dvh m-auto pt-24 pb-24">
+        {communityData === null ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="text-2xl text-gray-400">Error Loading Data</div>
+          </div>
+        ) : communityData.length === 0 ? (
+          <div className="h-28 w-28 flex items-center justify-center">
+            <LoadingSpinner />
+          </div>
+        ) : (
+          communityData?.map((community) => (
+            <CommunityOverview
+              key={community.id}
+              comunity={community}
+              allHomeList={homeData ?? []}
+            />
+          ))
+        )}
+      </div>
+    </>
   );
 };
 

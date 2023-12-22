@@ -1,0 +1,6 @@
+
+.headerRoundBg {
+    height: 100px;
+    /* File at "../assets/header-background.png" */
+    background: url("../assets/header-background.png") no-repeat center center;
+}
