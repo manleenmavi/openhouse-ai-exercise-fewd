@@ -59,7 +59,7 @@ const CommunityList = () => {
   return (
     <>
       <CommunityListHeader />
-      <div className="flex justify-evenly flex-wrap max-w-[80%] min-h-dvh m-auto pt-24 pb-24">
+      <div className="flex justify-evenly flex-wrap w-full md:max-w-[80%] min-h-dvh m-auto pt-24 pb-24">
         {communityData === null ? (
           <div className="w-full h-full flex items-center justify-center">
             <div className="text-2xl text-gray-400">Error Loading Data</div>
