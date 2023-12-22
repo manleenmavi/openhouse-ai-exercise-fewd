@@ -8,18 +8,10 @@ const CommunityList = () => {
   const fetchCommunityData = async () => {
     try {
       console.log("fetching data");
+      //   Using proxy to prevent CORS error
       const response = await fetch(
-        "https://storage.googleapis.com/openhouse-ai-fe-coding-test/communities.json",
-        {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-
-            redirect: "follow",
-        }
-        );
+        "/api/googleapis-storage/openhouse-ai-fe-coding-test/communities.json"
+      );
       console.log(response);
       const data = await response.json();
       console.log("data");
