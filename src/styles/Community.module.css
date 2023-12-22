@@ -1,0 +1,47 @@
+.communityOverviewCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 30%;
+  width: 300px;
+  max-width: 90%;
+  min-height: 300px;
+  margin: 20px;
+  /* padding: 20px; */
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.communityOverviewName {
+  overflow: visible;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  margin: 10px;
+  position: relative;
+  background-color: #aae3e250;
+  clip-path: polygon(0 0, 95% 0, 85% 100%, 0 100%);
+}
+
+/* Background Effect for Community Name */
+/* .communityOverviewName::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #aae3e250;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  }
+
+  .communityOverviewNameText {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  } */

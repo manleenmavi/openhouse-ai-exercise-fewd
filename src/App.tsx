@@ -1,10 +1,15 @@
 import "./App.css";
+import HomeContent from "./components/Home/HomeContent";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <>
-      <div className="text-lg text-cyan-500">
-        <h1>Tailwind configured</h1>
+      <NavBar />
+      <div className="">
+        
+        <HomeContent />
+       
       </div>
     </>
   );
