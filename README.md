@@ -1,3 +1,14 @@
+## Branches Information
+
+### Main Branch
+The **main** branch represents the version of the application that has been submitted for review as part of the Front-End/Full-Stack Software Developer application at OpenHouse.AI.
+
+### Beta Branch (New Features)
+The **beta** branch contains ongoing development work, including additional features and enhancements, beyond the submitted version. Any new features or improvements will be developed and tested here.
+
+Please refer to the **main** branch the application review process, unless interested in code fixes. If you have any questions or need specific details about the submitted version, feel free to reach out for clarification.
+
+
 # OpenHouse.AI - Front End Web Development Coding Exercise
 This project is a coding exercise for front-end web development, using React, TypeScript, and Vite.
 
