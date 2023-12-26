@@ -76,9 +76,15 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
           <div className={`${styles.communityOverviewName} text-lg md:text-xl lg:text-2xl break-words`}>
             {comunity.name}
           </div>
-          <div className="pl-4 pr-4 m-1 mb-4">
+          <div className="pl-4 pr-4 m-1 mb-2">
             {avgPrice ? `Average Price: $${new Intl.NumberFormat('en-CA', { maximumFractionDigits: 2, minimumFractionDigits: 2 }).format(avgPrice)}` : " "}
           </div>
+          {
+            comunity.group && 
+              <div className="pl-4 pr-4 m-1 mb-4 text-gray-500 text-right">
+                {comunity.group}
+          </div>
+          }
         </div>
       </div>
     </div>
