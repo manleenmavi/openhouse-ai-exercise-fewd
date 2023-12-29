@@ -3,16 +3,14 @@ import { Community, Home } from "../../types/types";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "../Animations/LoadingSpinner";
 import CommunityListHeader from "./CommunityListHeader";
+import DialogModal from "../Shared/DialogModal";
 
 const CommunityList = () => {
   const [communityData, setCommunityData] = useState<Community[] | null>([]);
 
   // Validator for Community data
   const isCommunity = (data: any): data is Community => {
-    return (
-      data.id !== undefined &&
-      data.name !== undefined
-    );
+    return data.id !== undefined && data.name !== undefined;
   };
 
   const fetchCommunityData = async () => {
@@ -28,10 +26,10 @@ const CommunityList = () => {
         return isCommunity(community);
       });
 
-    //  Checking if all data was invalid
-    if(validData.length === 0 && data.length !== 0){
+      //  Checking if all data was invalid
+      if (validData.length === 0 && data.length !== 0) {
         throw new Error("Invalid data in community list");
-    }
+      }
 
       //   Sort the data by name
       validData.sort((a: Community, b: Community) => {
@@ -77,6 +75,14 @@ const CommunityList = () => {
 
   return (
     <>
+      {/* Test */}
+      <DialogModal
+        onClose={() => console.log("Closed -test")}
+        title="Test Title"
+      >
+        Title
+      </DialogModal>
+
       <CommunityListHeader />
       <div className="flex justify-evenly flex-wrap w-full md:max-w-[80%] min-h-dvh m-auto pt-24 pb-24">
         {communityData === null ? (
