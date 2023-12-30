@@ -8,6 +8,10 @@ type DialogModalProps = {
   isOpen?: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  style?: {
+    overlay?: ReactModal.Styles["overlay"];
+    content?: ReactModal.Styles["content"];
+  };
 };
 
 const DialogModal = (props: DialogModalProps) => {
@@ -27,13 +31,19 @@ const DialogModal = (props: DialogModalProps) => {
       preventScroll={true}
       ariaHideApp={false}
       closeTimeoutMS={150}
-      className=""
       style={{
         overlay: {
           // Blur Background
           backdropFilter: "blur(5px)",
           backgroundColor: "rgba(0, 0, 0, 0.3)",
           transition: "background-color 0.2s ease-in-out",
+          ...props.style?.overlay,
+        },
+        content: {
+          margin: "auto",
+          maxWidth: "800px",
+          minWidth: "fit-content",
+          ...props.style?.content,
         },
       }}
     >

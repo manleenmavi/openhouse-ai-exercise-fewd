@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "../../styles/Community.module.css";
 import { Community, Home } from "../../types/types";
 import DialogModal from "../Shared/DialogModal";
+import CommunityHomeList from "./Home/CommunityHomeList";
 
 type CommunityOverviewProps = {
   comunity: Community;
@@ -137,7 +138,8 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
           onClose={handleCommunityDialog}
           title={`${comunity.name} Community Detail`}
         >
-          Number of Homes: {homeList?.length}
+
+          <CommunityHomeList homeList={homeList ?? []} />
         </DialogModal>
       )}
     </>
