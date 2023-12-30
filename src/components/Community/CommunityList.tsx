@@ -3,7 +3,6 @@ import { Community, Home } from "../../types/types";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "../Animations/LoadingSpinner";
 import CommunityListHeader from "./CommunityListHeader";
-import DialogModal from "../Shared/DialogModal";
 
 const CommunityList = () => {
   const [communityData, setCommunityData] = useState<Community[] | null>([]);
@@ -75,13 +74,6 @@ const CommunityList = () => {
 
   return (
     <>
-      {/* Test */}
-      <DialogModal
-        onClose={() => console.log("Closed -test")}
-        title="Test Title"
-      >
-        Title
-      </DialogModal>
 
       <CommunityListHeader />
       <div className="flex justify-evenly flex-wrap w-full md:max-w-[80%] min-h-dvh m-auto pt-24 pb-24">
