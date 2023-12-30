@@ -31,14 +31,21 @@ The project root folder contains the following elements:
 - Other essential project files
 
 ## Features
-Following are the main features.
 
-1. Application retrieves data from the provided RESTful endpoints and displays it to the user.
-2. Data includes community groups and the houses in there group. Image is also displayed along the community.
-3. Sorts the data alphabetically.
-4. Shows the average house prices within each community.
-5. Filters out invalid data.
-6. Provides a simple and responsive web interface.
+### V 0.2
+- Expanded information about each community, showcasing additional details and attributes.
+- Community group is also shown.
+- Added Dialog modal to provide community details, including associated homes..
+- Detailed home information, featuring type, sample image, and pricing.
+- Bug Fixes.
+
+### V 0.1 (Original)
+- Application retrieves data from the provided RESTful endpoints and displays it to the user.
+- Data includes community groups and the houses in there group. Image is also displayed along the community.
+- Sorts the data alphabetically.
+- Shows the average house prices within each community.
+- Filters out invalid data.
+- Provides a simple and responsive web interface.
 
 ## Technologies
 The project is built using:
