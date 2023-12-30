@@ -17,7 +17,7 @@ const CommunityHomeOverview = ({
 }: CommunityHomeOverviewProps) => {
   return (
     <div
-      className={`flex gap-2 flex-wrap min-w-fit w-3/4 mx-auto ${
+      className={`flex gap-2 flex-wrap w-full mx-auto ${
         clasName ?? ""
       }`}
     >
@@ -42,7 +42,7 @@ const CommunityHomeOverview = ({
       </div>
 
       <div className="flex flex-col sm:gap-1 justify-center">
-        <div className="text-lg sm:text-xl md:text-2xl font-bold text-black">
+        <div className="text-lg sm:text-xl font-bold text-black">
           {home.type}
         </div>
         <div className="text-base sm:text-lg text-slate-600">

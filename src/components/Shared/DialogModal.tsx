@@ -67,7 +67,7 @@ const DialogModal = (props: DialogModalProps) => {
 
         <div className="p-5 flex-grow">{props.children}</div>
 
-        <div className="w-full text-center">
+        <div className="w-full text-center py-4 p-2 border-t border-slate-200">
           <button
             className="bg-slate-300 text-white rounded-md py-1 px-3 hover:bg-slate-400 transition-all"
             onClick={handleClose}

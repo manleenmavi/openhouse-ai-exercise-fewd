@@ -138,8 +138,58 @@ const CommunityOverview = (props: CommunityOverviewProps) => {
           onClose={handleCommunityDialog}
           title={`${comunity.name} Community Detail`}
         >
+          <div className="max-w-lg mx-auto">
+            <div className="flex flex-col justify-between">
+              <div className="max-h-full w-[100%] mx-auto">
+                {imageError ? (
+                  <div className="w-full h-full flex items-center justify-center my-16">
+                    <div className="text-center text-2xl text-gray-400">
+                      Community Image Unavailable
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={comunity.imgUrl ?? ""}
+                    alt={comunity.name}
+                    className="w-full rounded-t-md mx-auto"
+                  />
+                )}
 
-          <CommunityHomeList homeList={homeList ?? []} />
+                <div
+                  className={`${styles.communityDetailName} rounded-b-md text-lg md:text-xl lg:text-3xl break-words`}
+                >
+                  {comunity.name}
+                </div>
+
+                <div className="pl-4 pr-4 m-1 mb-2">
+                  {`Average Price: ${
+                    avgPrice
+                      ? "$" +
+                        new Intl.NumberFormat("en-CA", {
+                          maximumFractionDigits: 2,
+                          minimumFractionDigits: 2,
+                        }).format(avgPrice)
+                      : "Not Applicable"
+                  }`}
+                </div>
+                { 
+                  <div className="pl-4 pr-4 m-1 mb-4">
+                    Community Group: {`${comunity.group ?? "Not Available"}`}
+                  </div>
+                }
+              </div>
+            </div>
+
+            {
+              homeList?.length !== 0 &&
+              <div className="text-xl font-bold text-center mt-8 mb-6">
+              Homes in {comunity.name}
+            </div>}
+
+            <div className="max-w-[90%] mx-auto">
+              <CommunityHomeList homeList={homeList ?? []} />
+            </div>
+          </div>
         </DialogModal>
       )}
     </>
